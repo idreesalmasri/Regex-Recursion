@@ -7,8 +7,22 @@ characters (no numbers and symbols) and it should end with capital A else return
 
 function capitalA(s){
     // Add your logic.
-    return;
+    let r1 = /([a-z]|[A-Z])/g;
+    let r2 = /[!@#$%&()_*\-=\[\]{};':"\\|,.<>\/?]+|\d/g;
+    let r3 = /A$/g;
+    let string = r1.test(s);
+    let test =r2.test(s);
+    let capital = r3.test(s);
+    
+                        
+    if(string == true && test == false&& capital ==true){
+        return true
+    }else{
+        return false
+    }
+   
 }
+
 
 
 /* Write a function that take a string and return true if the the sting is following the emails pattern
@@ -16,7 +30,12 @@ which end with io (example@example.io) */
 
 function ioEmail(email){
     // Add your logic.
-    return;
+    let emailTest = email.match(/^[\w]+@([\w-])+[\w-].io$/g);
+    if(emailTest != null){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 /* You have a text that contain image names with their extention you need to write a function to 
@@ -28,7 +47,12 @@ required extention are jpg, jpeg and png.
 
 function imagesSearcher(text){
     let arr = [];
-    // Add your logic.
+    let arr2 = text.split(" ");
+    arr2.forEach(element => {
+        if(element.match(/([a-zA-Z0-9\s_\\.\-\(\):])+(.jpeg|.jpg|.png)$/g) != null){
+        arr.push(element);
+        }
+    });
     return arr
 }
 
